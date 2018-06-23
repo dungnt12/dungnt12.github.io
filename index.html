@@ -1,10 +1,126 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Document</title>
+<html lang="en"><head>
+	<title> Example </title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">  
+	<link rel="stylesheet" href="vendor/bootstrap.css">
+	<script src="vendor/bootstrap.js"></script>
+	<script src="1.js"></script>
+	<script src="vendor/popper.min.js"></script>
+	<script src="vendor/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="vendor/font-awesome.css">
+	<link rel="stylesheet" href="1.css">
 </head>
 <body>
-	<h2>adasdas</h2>
+	<div class="chung">
+	<div class="tieudiet">Mục tiêu đã tiêu diệt: <span class="dem"></span></div>
+	<div>Thời gian còn lại <span class="tgian"></span></div>
+		</div>
+	<div class="alert alert-danger text-center thongbao" role="alert">
+		<strong>Nhiệm vụ!</strong> 
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true" class="dong"><i class="fa fa-close"></i>Đóng lại nào</span>
+			<span class="sr-only">Close</span>
+		</button>
+		<h3>Xin chào :v</h3>
+		<p>Ấn vào đóng để bắt đầu</p>
+	</div>
+	<div class="container tungson">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="card">
+					<img class="card-img-top img-fluid" src="images/tungson.jpg" alt="Card image cap">
+					<div class="card-block">
+						<h4 class="card-title">Card title</h4>
+						<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+						<a href="#" class="btn btn-primary">Button</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+			<div class="jumbotron" >
+				<h1 class="display-3">Hết giờ rồi mấy chế!</h1>
+			</div>
+
+	<style>
+	.jumbotron{
+		position: absolute;
+		top: 20%;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+	body{
+		width: 100vw;
+		height: 100vh;
+		overflow: hidden;
+	}
+	html, body{
+		cursor: url("images/bua.png"), auto;
+	}
+</style>
+<script>
+	$(document).ready(function() {
+		$('.tungson, .jumbotron').hide();
+		$('.dong').click(function(event) {
+		function random(min, max){
+			return Math.floor(Math.random() *(max-min) + min);
+		}
+		s = 15;
+		var i = 0;
+		setInterval(function(){
+			dem_tt = 0;
+			chieu_rong = $('html').width();
+			chieu_dai = $('html').height();
+			leftStart = random(0, chieu_rong);
+			timeRun = random(5000, 4000);
+			size = random(50, 200);
+			endLeft = random(leftStart-300, leftStart+300);
+
+			hinh = document.createElement("img");
+			$(hinh).appendTo('body')
+			.attr('src', 'images/hoa2.png')
+			.css({
+				width: size+'px',
+				position: 'absolute',
+				top: '0',
+				left: leftStart,
+				height: size+'px',
+				objectFit: 'cover'
+			})
+			.click(function(event) {
+				$(this).hide();
+				i+=1;
+				dem_tt++;
+				$('.dem').html(i);
+			})
+			.animate({
+				'top': chieu_dai - size ,
+				'left': endLeft
+			},{
+				duration : timeRun,
+				easing : 'linear',
+				complete:function(){
+					$(this).fadeOut('fast',function(){
+						$(this).remove();
+					});
+				}
+			});	
+		},500);
+
+		setInterval(function(){
+			$('.tgian').html(s+'s');
+			s--;
+			if(s<=0){
+				$('.jumbotron').show('2000');
+				$('.tungson').show('slow');
+				$('.tieudiet').hide();
+				return s=0;
+			}
+		},1000);
+		});
+	});
+</script>
 </body>
 </html>
