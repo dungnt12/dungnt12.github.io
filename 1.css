@@ -2,7 +2,7 @@
 
 .img-fluid {
     max-width: 100%;
-    height: auto !important;
+    width: 100%;
 }
 
 @media (min-width: 576px){
@@ -169,6 +169,7 @@ h2#a0s3 {
     padding-right: 0;
     height: 100%;
     overflow: hidden;
+    width: 100%;
 }
 
 .col-sm-6.tt_chitiet {
