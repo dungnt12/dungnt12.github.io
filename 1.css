@@ -25,6 +25,11 @@ p#h4s {
     padding-bottom: 0;
 }
 
+.col-sm-6.anh_tt img {
+    height: 100%;
+    object-fit: cover;
+}
+
 ul.a5s6e {
     display: none !important;
     visibility: hidden;
